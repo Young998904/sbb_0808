@@ -86,10 +86,9 @@ public class MainController {
     @ResponseBody
     public String showMbti(@PathVariable String name) {
         return switch (name) {
-            case "홍길동" -> "INFP";
             case "홍길순" -> "INFJ";
             case "임꺽정" -> "ENFP";
-            case "장희성" -> "INFP";
+            case "장희성", "홍길동" -> "INFP";
             default -> "모름";
         };
     }
