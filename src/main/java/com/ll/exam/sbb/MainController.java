@@ -203,7 +203,7 @@ public class MainController {
         return p;
     }
 
-    @GetMapping("addPerson")
+    @GetMapping("/addPerson/{id}/{age}")
     @ResponseBody
     Person addPerson(Person p) {
         return p;
@@ -226,6 +226,7 @@ class Article {
 
 @AllArgsConstructor
 @Getter
+@Setter
 class Person {
     private int id;
     private int age;
