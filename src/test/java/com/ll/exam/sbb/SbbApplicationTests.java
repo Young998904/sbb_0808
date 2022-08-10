@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class SbbApplicationTests {
@@ -77,5 +78,16 @@ class SbbApplicationTests {
 		Question q = questions.get(0);
 
 		assertThat(q.getSubject()).isEqualTo("sbb가 무엇인가요?");
+	}
+
+	@Test
+	void testJpa7() {
+		Optional<Question> oq = this.questionRepository.findById(1);
+		assertTrue(oq.isPresent());
+		Question q = oq.get();
+		q.setSubject("수정된 제목");
+		this.questionRepository.save(q);
+
+		assertEquals("수정된 제목", questionRepository.findById(1).get().getSubject());
 	}
 }
