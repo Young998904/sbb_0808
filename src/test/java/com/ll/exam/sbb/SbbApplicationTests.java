@@ -90,4 +90,13 @@ class SbbApplicationTests {
 
 		assertEquals("수정된 제목", questionRepository.findById(1).get().getSubject());
 	}
+
+	@Test
+	void testJpa8() {
+		Optional<Question> oq1 = this.questionRepository.findById(2);
+		Question q = oq1.get();
+		this.questionRepository.delete(q);
+
+		assertEquals(1, questionRepository.count());
+	}
 }
