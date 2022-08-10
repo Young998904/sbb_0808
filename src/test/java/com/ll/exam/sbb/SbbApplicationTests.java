@@ -70,4 +70,12 @@ class SbbApplicationTests {
 
 		assertEquals(1, q.getId());
 	}
+
+	@Test
+	void testJpa6() {
+		List<Question> questions = this.questionRepository.findBySubjectLike("sbb%");
+		Question q = questions.get(0);
+
+		assertThat(q.getSubject()).isEqualTo("sbb가 무엇인가요?");
+	}
 }
