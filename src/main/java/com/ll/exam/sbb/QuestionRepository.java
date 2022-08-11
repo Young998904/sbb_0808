@@ -1,5 +1,6 @@
 package com.ll.exam.sbb;
 
+import com.ll.exam.sbb.base.RepositoryUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -10,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface QuestionRepository extends JpaRepository<Question, Integer> {
+public interface QuestionRepository extends JpaRepository<Question, Integer>, RepositoryUtil {
     Question findBySubject(String subject);
 
     Question findBySubjectAndContent(String subject, String content);
@@ -24,20 +25,4 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
             nativeQuery = true
     )
     void truncate();
-
-    @Transactional
-    @Modifying
-    @Query(
-            value = "SET FOREIGN_KEY_CHECKS = 0",
-            nativeQuery = true
-    )
-    void disableForeignKeyChecks();;
-
-    @Transactional
-    @Modifying
-    @Query(
-            value = "SET FOREIGN_KEY_CHECKS = 1",
-            nativeQuery = true
-    )
-    void enableForeignKeyChecks();
 }
