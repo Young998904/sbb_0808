@@ -17,5 +17,5 @@ public interface AnswerRepository extends JpaRepository<Answer, Integer>, Reposi
             value = "truncate answer",
             nativeQuery = true
     )
-    void truncate();
+    void truncateTable();
 }
