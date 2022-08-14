@@ -1,4 +1,4 @@
-package com.ll.exam.sbb;
+package com.ll.exam.sbb.question;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.ll.exam.sbb.answer.Answer;
 import lombok.Getter;
 import lombok.Setter;
 
